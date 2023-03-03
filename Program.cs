@@ -1,7 +1,13 @@
+using dotnetAssessment.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<DeveloperDbContext>(opts =>
+opts.UseInMemoryDatabase("devDB"));
+builder.Services.AddScoped<DeveloperDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
