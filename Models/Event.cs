@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace dotnetAssessment.Models
 {
-    public class Event
+    public class Event : BaseEntity
     {
-        [Key]
-        public int EventId { get; set; }
-
         [Required, StringLength(300)]
         public string? Name { get; set; }
 
@@ -19,11 +16,12 @@ namespace dotnetAssessment.Models
         [Required]
         public DateTime? Date { get; set; }
 
+        [Required]
         public Address? Address { get; set; }
 
         [Required]
         public bool? Remote { get; set; }
 
-        public List<Invitation>? Invitations { get; set; }
+        public virtual ICollection<Invitation>? Invitations { get; set; }
     }
 }

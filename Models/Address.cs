@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace dotnetAssessment.Models
 {
-    public class Address
+    public class Address : BaseEntity
     {
-        [Key]
-        public int AddressId { get; set; }
-
         [Required]
         public string? Country { get; set; }
 

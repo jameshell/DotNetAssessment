@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace dotnetAssessment.Models
 {
-    public class Developer
+    public class Developer : BaseEntity
     {
-        [Key]
-        public int DeveloperId { get; set; }
-
         [Required, StringLength(255)]
         public string? Name { get; set; }
 

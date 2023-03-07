@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using dotnetAssessment.Models;
+using Microsoft.AspNetCore.Authorization;
+using dotnetAssessment.Repositories;
 
 namespace dotnetAssessment.Controllers
 {
@@ -11,20 +13,29 @@ namespace dotnetAssessment.Controllers
     [Route("[controller]")]
     public class DeveloperController : ControllerBase
     {
-        private readonly ILogger<DeveloperController> _logger;
-        private readonly DeveloperDbContext _context;
+        private IDeveloperRepository _devRepository;
 
-        public DeveloperController(ILogger<DeveloperController> logger, DeveloperDbContext context)
+        public DeveloperController(IDeveloperRepository devRepository)
         {
-            _logger = logger;
-            _context = context;
+            this._devRepository = devRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllDevelopers()
-        {
-            List<Developer> devs = _context.GetDevelopers();
-            return Ok(devs);
-        }
+        [Route("")]
+         public IEnumerable<Developer> GetAllDevelopers() => _devRepository.GetAll();
+
+        [HttpGet]
+        [Route("{devName}")]
+         public Task<Developer> GetDeveloperByName(string devName) => _devRepository.GetByName(devName);
+
+        [HttpPost]
+        [Route("")]
+        [AllowAnonymous]
+        public void AddDeveloper([FromBody] Developer dev) => _devRepository.Insert(dev);
+
+        [HttpDelete]
+        [Route("{devId}")]
+        [AllowAnonymous]
+        public void DeleteDeveloper(Guid devId) => _devRepository.Delete(devId);
     }
 }
