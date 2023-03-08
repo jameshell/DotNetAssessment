@@ -6,11 +6,12 @@ namespace dotnetAssessment.Repositories
 {
     public class DeveloperRepository : Repository<Developer>, IDeveloperRepository
     {
-        public DeveloperRepository(DatabaseContext context) : base(context) {}
+        public DeveloperRepository(DatabaseContext context) : base(context) 
+        {
+        }
         public Task<Developer> GetByName(string firstName)
         {
-            return context.Set<Developer>()
-                          .FirstOrDefaultAsync(dev => dev.Name == firstName);
+            return context.Set<Developer>().FirstOrDefaultAsync(dev => dev.Name == firstName);
         }
     }
 }

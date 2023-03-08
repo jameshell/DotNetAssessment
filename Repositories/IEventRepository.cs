@@ -2,9 +2,9 @@ using dotnetAssessment.Models;
 
 namespace dotnetAssessment.Repositories
 {
-    interface IEventRepository : IRepository<Event>
+    public interface IEventRepository : IRepository<Event>
     {
-        Task<bool> FindByDeveloper();
-        Task<bool> FindByAddress();
+        Task<Event> GetEventByName(string eventName);
+        Task<Event> GetEventByDeveloperName(string devName);
     }
 }

@@ -9,6 +9,7 @@ builder.Services.AddDbContext<DatabaseContext>(opts => opts.UseInMemoryDatabase(
 builder.Services.AddScoped<DatabaseContext>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IDeveloperRepository, DeveloperRepository>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
