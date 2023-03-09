@@ -21,11 +21,11 @@ namespace dotnetAssessment.Controllers
          public IEnumerable<Invitation> GetAllInvitations() => _invRepository.GetAll();
 
         [HttpGet]
-        [Route("{Event/eventName}")]
-         public Task<Invitation> GetInvitationByEventName(string eventName) => _invRepository.GetInvitationByEventName(eventName);
+        [Route("Events/{eventName}")]
+        public Task<Invitation> GetInvitationByEventName(string eventName) => _invRepository.GetInvitationByEventName(eventName);
 
         [HttpGet]
-        [Route("DeveloperName/{devName}")]
+        [Route("Guests/{devName}")]
          public Task<Invitation> GetInvitationByDeveloperName(string devName) => _invRepository.GetInvitationByDeveloperName(devName);
 
         [HttpPost]

@@ -25,8 +25,8 @@ namespace dotnetAssessment.Controllers
          public Task<Event> GetEventByName(string eventName) => _eventRepository.GetEventByName(eventName);
 
         [HttpGet]
-        [Route("DeveloperHost/{devName}")]
-         public Task<Event> GetEventByDeveloperName(string devName) => _eventRepository.GetEventByDeveloperName(devName);
+        [Route("Host/{devname}")]
+         public Task<Event> GetEventByDeveloperName(string devname) => _eventRepository.GetEventByDeveloperName(devname);
 
         [HttpPost]
         [Route("")]
