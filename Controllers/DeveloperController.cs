@@ -40,7 +40,7 @@ namespace dotnetAssessment.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error when creting a Developer.");
+                _logger.LogError($"Error when creating a Developer.");
                 _unitOfWork.Rollback();
                 return Task.FromResult(new Developer());
             }
@@ -49,6 +49,20 @@ namespace dotnetAssessment.Controllers
         [HttpDelete]
         [Route("{devId}")]
         [AllowAnonymous]
-        public void DeleteDeveloper(Guid devId) => _unitOfWork.DeveloperRepository.Delete(devId);
+        public Task<Guid> DeleteDeveloper(Guid devId)
+        {   
+            try
+            {
+                _unitOfWork.DeveloperRepository.Delete(devId);
+                _unitOfWork.Commit();
+                return Task.FromResult(devId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error when deleting a Developer.");
+                _unitOfWork.Rollback();
+                return Task.FromResult(new Guid());
+            }
+        }
     }
 }
