@@ -40,7 +40,7 @@ namespace dotnetAssessment.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error when creating a Developer.");
+                _logger.LogError($"Error when creating a Developer: {dev.Id}");
                 _unitOfWork.Rollback();
                 return Task.FromResult(new Developer());
             }

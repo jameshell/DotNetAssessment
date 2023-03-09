@@ -9,28 +9,54 @@ namespace dotnetAssessment.Controllers
     [Route("[controller]")]
     public class AddressController : ControllerBase
     {
-        private IRepository<Address> addressRepository;
-        public AddressController(IRepository<Address> addressRepository)
+        private IUnitOfWork _unitOfWork;
+        private readonly ILogger<AddressController> _logger;
+        public AddressController(IUnitOfWork unitOfWork, ILogger<AddressController> logger)
         {
-            this.addressRepository = addressRepository;
+            this._unitOfWork = unitOfWork;
+            this._logger = logger;
         }
 
         [HttpGet]
         [Route("")]
-         public IEnumerable<Address> GetAllAddresses() => addressRepository.GetAll();
+         public IEnumerable<Address> GetAllAddresses() => _unitOfWork.AddressRepository.GetAll();
 
         [HttpGet]
         [Route("{addressId}")]
-         public Address GetAddressById(Guid addressId) => addressRepository.GetById(addressId);
+         public Address GetAddressById(Guid addressId) => _unitOfWork.AddressRepository.GetById(addressId);
 
         [HttpPost]
         [Route("")]
         [AllowAnonymous]
-        public void AddAddress([FromBody] Address address) => addressRepository.Insert(address);
+        public void AddAddress([FromBody] Address address)
+        {
+            try
+            {
+                _unitOfWork.AddressRepository.Insert(address);
+                _unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error when creating an address: {address.Id} {ex}");
+                _unitOfWork.Rollback();
+            }
+        }
 
         [HttpDelete]
         [Route("{addressId}")]
         [AllowAnonymous]
-        public void DeleteAddress(Guid addressId) => addressRepository.Delete(addressId);
+        public void DeleteAddress(Guid addressId)
+        {
+            try
+            {
+                _unitOfWork.AddressRepository.Delete(addressId);
+                _unitOfWork.Commit();
+            }
+            catch (System.Exception)
+            {
+                _logger.LogError($"Error when deleting an address: {addressId}");
+                _unitOfWork.Rollback();
+            }
+        }
     }
 }
