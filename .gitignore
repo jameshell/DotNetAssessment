@@ -72,6 +72,9 @@ ScaffoldingReadMe.txt
 StyleCopReport.xml
 
 # Files built by Visual Studio
+DotnetAssessment/obj
+DotnetAssessment/bin
+bin/
 obj/
 *_i.c
 *_p.c
