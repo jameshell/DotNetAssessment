@@ -1,8 +1,5 @@
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using dotnetAssessment.Models;
 using Microsoft.AspNetCore.Authorization;
 using dotnetAssessment.Repositories;
@@ -13,29 +10,45 @@ namespace dotnetAssessment.Controllers
     [Route("[controller]")]
     public class DeveloperController : ControllerBase
     {
-        private IDeveloperRepository _devRepository;
+        private IUnitOfWork _unitOfWork;
+        private readonly ILogger<DeveloperController> _logger;
 
-        public DeveloperController(IDeveloperRepository devRepository)
+        public DeveloperController(IUnitOfWork unitOfWork, ILogger<DeveloperController> logger)
         {
-            this._devRepository = devRepository;
+            this._unitOfWork = unitOfWork;
+            this._logger = logger;
         }
 
         [HttpGet]
         [Route("")]
-         public IEnumerable<Developer> GetAllDevelopers() => _devRepository.GetAll();
+        public IEnumerable<Developer> GetAllDevelopers() => _unitOfWork.DeveloperRepository.GetAll();
 
         [HttpGet]
         [Route("{devName}")]
-         public Task<Developer> GetDeveloperByName(string devName) => _devRepository.GetByName(devName);
+        public Task<Developer> GetDeveloperByName(string devName) => _unitOfWork.DeveloperRepository.GetByName(devName);
 
         [HttpPost]
         [Route("")]
         [AllowAnonymous]
-        public void AddDeveloper([FromBody] Developer dev) => _devRepository.Insert(dev);
+        public Task<Developer> AddDeveloper([FromBody] Developer dev)
+        {
+            try
+            {
+                _unitOfWork.DeveloperRepository.Insert(dev);
+                _unitOfWork.Commit();
+                return Task.FromResult(dev);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error when creting a Developer.");
+                _unitOfWork.Rollback();
+                return Task.FromResult(new Developer());
+            }
+        } 
 
         [HttpDelete]
         [Route("{devId}")]
         [AllowAnonymous]
-        public void DeleteDeveloper(Guid devId) => _devRepository.Delete(devId);
+        public void DeleteDeveloper(Guid devId) => _unitOfWork.DeveloperRepository.Delete(devId);
     }
 }

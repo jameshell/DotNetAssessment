@@ -33,13 +33,11 @@ namespace dotnetAssessment.Repositories
             if(entity == null) throw new ArgumentNullException("entity");
 
             entities.Add(entity);
-            context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             if(entity == null) throw new ArgumentNullException("entity");
-            context.SaveChanges();
         }
 
         public void Delete(Guid id)
@@ -48,7 +46,6 @@ namespace dotnetAssessment.Repositories
 
             T entity = entities.SingleOrDefault(s => s.Id == id);
             entities.Remove(entity);
-            context.SaveChanges();
         }
     }
 }
