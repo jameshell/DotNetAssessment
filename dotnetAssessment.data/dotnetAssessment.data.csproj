@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\dotnetAssessment.core\dotnetAssessment.core.csproj" />
+    <ProjectReference Include="..\dotnetAssessment.business\dotnetAssessment.business.csproj" />
   </ItemGroup>
 
 </Project>
