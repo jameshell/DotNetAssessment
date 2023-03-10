@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\dotnetAssessment.data\dotnetAssessment.data.csproj" />
+    <ProjectReference Include="..\dotnetAssessment.core\dotnetAssessment.core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

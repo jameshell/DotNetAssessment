@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetAssessment.business",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetAssessment.api", "dotnetAssessment.api\dotnetAssessment.api.csproj", "{D0492510-8061-4823-9143-F9F4DF802110}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnetAssessment.core", "dotnetAssessment.core\dotnetAssessment.core.csproj", "{F9DBDA27-375A-4287-A286-36A0CB83803F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{D0492510-8061-4823-9143-F9F4DF802110}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0492510-8061-4823-9143-F9F4DF802110}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0492510-8061-4823-9143-F9F4DF802110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9DBDA27-375A-4287-A286-36A0CB83803F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9DBDA27-375A-4287-A286-36A0CB83803F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9DBDA27-375A-4287-A286-36A0CB83803F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9DBDA27-375A-4287-A286-36A0CB83803F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
