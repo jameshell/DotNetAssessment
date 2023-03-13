@@ -6,8 +6,8 @@ namespace dotnetAssessment.business.Services
     public interface IAddressService
     {
         IEnumerable<Address> GetAllAddresses();
-        Address GetAddressById();
-        Task<Address> AddAddress();
-        Task DeleteDeveloper();
+        Address GetAddressById(Guid addressId);
+        void AddAddress(Address address);
+        void DeleteDeveloper(Guid addressId);
     }
 }
