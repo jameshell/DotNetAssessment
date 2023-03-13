@@ -7,7 +7,7 @@ namespace dotnetAssessment.business.Services
     {
         IEnumerable<Invitation> GetAllInvitations();
         Task<Invitation> GetInvitationByEventName(string eventName);
-        Task<Event> GetInvitationByDeveloperName(string devName);
+        Task<Invitation> GetInvitationByDeveloperName(string devName);
         void AddInvitation(Invitation invitation);
         void DeleteInvitation(Guid invitationId);
     }
