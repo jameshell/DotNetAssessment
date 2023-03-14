@@ -20,7 +20,7 @@ namespace dotnetAssessment.Controllers
 
         [HttpGet]
         [Route("")]
-         public IEnumerable<Invitation> GetAllInvitations() => _unitOfWork.InvitationRepository.GetAll();
+        public IEnumerable<Invitation> GetAllInvitations() => _unitOfWork.InvitationRepository.GetAll();
 
         [HttpGet]
         [Route("Events/{eventName}")]
@@ -28,7 +28,7 @@ namespace dotnetAssessment.Controllers
 
         [HttpGet]
         [Route("Guests/{devName}")]
-         public Task<Invitation> GetInvitationByDeveloperName(string devName) => _unitOfWork.InvitationRepository.GetInvitationByDeveloperName(devName);
+        public Task<Invitation> GetInvitationByDeveloperName(string devName) => _unitOfWork.InvitationRepository.GetInvitationByDeveloperName(devName);
 
         [HttpPost]
         [Route("")]

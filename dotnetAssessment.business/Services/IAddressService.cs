@@ -8,6 +8,6 @@ namespace dotnetAssessment.business.Services
         IEnumerable<Address> GetAllAddresses();
         Address GetAddressById(Guid addressId);
         void AddAddress(Address address);
-        void DeleteDeveloper(Guid addressId);
+        void DeleteAddress(Guid addressId);
     }
 }

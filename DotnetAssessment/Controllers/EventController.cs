@@ -20,11 +20,11 @@ namespace dotnetAssessment.Controllers
 
         [HttpGet]
         [Route("")]
-         public IEnumerable<Event> GetAllEvents() => _unitOfWork.EventRepository.GetAll();
+        public IEnumerable<Event> GetAllEvents() => _unitOfWork.EventRepository.GetAll();
 
         [HttpGet]
         [Route("{eventName}")]
-         public Task<Event> GetEventByName(string eventName) => _unitOfWork.EventRepository.GetEventByName(eventName);
+        public Task<Event> GetEventByName(string eventName) => _unitOfWork.EventRepository.GetEventByName(eventName);
 
         [HttpGet]
         [Route("Host/{devname}")]

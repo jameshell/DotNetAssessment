@@ -29,7 +29,7 @@ namespace dotnetAssessment.business.Services.Impl
             }
         }
 
-        public void DeleteDeveloper(Guid addressId)
+        public void DeleteAddress(Guid addressId)
         {
             try
             {
