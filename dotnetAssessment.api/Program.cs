@@ -7,7 +7,7 @@ var services = builder.Services;
 var compositionRoot = new CompositionRoot(services);
 compositionRoot.Compose();
 
-// Add services to the container.
+// Add services to the container
 services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
