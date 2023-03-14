@@ -8,19 +8,20 @@ using dotnetAssessment.data.Repositories.Impl;
 namespace dotnetAssessment.root;
 public class CompositionRoot
 {
-    public CompositionRoot()
+    private readonly IServiceCollection _services;
+    public CompositionRoot(IServiceCollection services)
     {
+        this._services = services;
     }
 
-    public static void injectDependencies(IServiceCollection services)
+    public void Compose()
     {
-        services.AddDbContext<DatabaseContext>(opts => opts.UseInMemoryDatabase("Database"));
-        services.AddScoped<DatabaseContext>();
-        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        services.AddScoped<IDeveloperRepository, DeveloperRepository>();
-        services.AddScoped<IEventRepository, EventRepository>();
-        services.AddScoped<IInvitationRepository, InvitationRepository>();
-        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        _services.AddDbContext<DatabaseContext>(opts => opts.UseInMemoryDatabase("Database"));
+        _services.AddScoped<DatabaseContext>();
+        _services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        _services.AddScoped<IDeveloperRepository, DeveloperRepository>();
+        _services.AddScoped<IEventRepository, EventRepository>();
+        _services.AddScoped<IInvitationRepository, InvitationRepository>();
+        _services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
-
 }

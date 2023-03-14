@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\dotnetAssessment.business\dotnetAssessment.business.csproj" />
     <ProjectReference Include="..\dotnetAssessment.core\dotnetAssessment.core.csproj" />
+    <ProjectReference Include="..\dotnetAssessment.root\dotnetAssessment.root.csproj" />
   </ItemGroup>
 
 </Project>

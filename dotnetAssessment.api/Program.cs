@@ -1,11 +1,19 @@
+using dotnetAssessment.root;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Adding composition root
+var services = builder.Services;
+var compositionRoot = new CompositionRoot(services);
+compositionRoot.Compose();
 
-builder.Services.AddControllers();
+// Add services to the container.
+services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+
 
 var app = builder.Build();
 
