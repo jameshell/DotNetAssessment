@@ -9,7 +9,7 @@ namespace dotnetAssessment.api.Controllers
     [Route("[controller]")]
     public class AddressController : ControllerBase
     {
-        private IAddressService _addressService;
+        private readonly IAddressService _addressService;
 
         public AddressController(IAddressService addressService)
         {

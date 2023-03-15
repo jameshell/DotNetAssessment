@@ -9,7 +9,7 @@ namespace dotnetAssessment.api.Controllers
     [Route("[controller]")]
     public class InvitationController : ControllerBase
     {
-        private IInvitationService _invitationService;
+        private readonly IInvitationService _invitationService;
         public InvitationController(IInvitationService invitationService)
         {
             this._invitationService = invitationService;
