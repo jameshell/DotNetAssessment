@@ -24,7 +24,7 @@ namespace dotnetAssessment.business.Services.Impl
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error when creating a Developer: {dev.Id}");
+                _logger.LogError($"Error when creating a Developer: {dev.Id} {ex}");
                 _unitOfWork.Rollback();
                 return Task.FromResult(new Developer());
             }
@@ -40,7 +40,7 @@ namespace dotnetAssessment.business.Services.Impl
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error when deleting a Developer.");
+                _logger.LogError($"Error when deleting a Developer {devId}: {ex}");
                 _unitOfWork.Rollback();
                 return Task.FromResult(new Guid());
             }
