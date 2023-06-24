@@ -6,7 +6,7 @@ namespace dotnetAssessment.business.Services.Impl
 {
     public class DeveloperService : IDeveloperService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<DeveloperService> _logger;
         public DeveloperService(IUnitOfWork unitOfWork, ILogger<DeveloperService> logger)
         {

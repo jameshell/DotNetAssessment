@@ -6,7 +6,7 @@ namespace dotnetAssessment.business.Services.Impl
 {
     public class EventService : IEventService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<EventService> _logger;
         public EventService(IUnitOfWork unitOfWork, ILogger<EventService> logger)
         {

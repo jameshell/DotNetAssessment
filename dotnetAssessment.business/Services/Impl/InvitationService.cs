@@ -6,7 +6,7 @@ namespace dotnetAssessment.business.Services.Impl
 {
     public class InvitationService : IInvitationService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<InvitationService> _logger;
 
         public InvitationService(IUnitOfWork unitOfWork, ILogger<InvitationService> logger)
@@ -44,7 +44,7 @@ namespace dotnetAssessment.business.Services.Impl
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error when creating an invitation. {invitationId} {ex}");
+                _logger.LogError($"Error when deleting an invitation. {invitationId} {ex}");
                 _unitOfWork.Rollback();
             }
         }

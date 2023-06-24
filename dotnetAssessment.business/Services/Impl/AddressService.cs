@@ -6,7 +6,7 @@ namespace dotnetAssessment.business.Services.Impl
 {
     public class AddressService : IAddressService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
 
         public AddressService(IUnitOfWork unitOfWork, ILogger logger)
@@ -24,7 +24,7 @@ namespace dotnetAssessment.business.Services.Impl
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error when creating an address: {address.Id} {ex}");
+                _logger.LogError($"Error when creating an address: {address.Id} Details:{ex}");
                 _unitOfWork.Rollback();
             }
         }
@@ -36,9 +36,9 @@ namespace dotnetAssessment.business.Services.Impl
                 _unitOfWork.AddressRepository.Delete(addressId);
                 _unitOfWork.Commit();
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-                _logger.LogError($"Error when deleting an address: {addressId}");
+                _logger.LogError($"Error when deleting an address: {addressId}. Details:{ex}");
                 _unitOfWork.Rollback();
             }
         }
