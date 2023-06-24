@@ -20,6 +20,7 @@ public class CompositionRoot
         _services.AddScoped<DatabaseContext>();
         _services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         _services.AddScoped<IDeveloperRepository, DeveloperRepository>();
+        _services.AddScoped<IDeveloperService, DeveloperService>();
         _services.AddScoped<IEventRepository, EventRepository>();
         _services.AddScoped<IInvitationRepository, InvitationRepository>();
         _services.AddScoped<IUnitOfWork, UnitOfWork>();
