@@ -12,7 +12,7 @@ namespace dotnetAssessment.api.Controllers
         private readonly IEventService _eventService;
         public EventController(IEventService eventService)
         {
-            this._eventService = eventService;
+            _eventService = eventService;
         }
 
         [HttpGet]
@@ -33,7 +33,7 @@ namespace dotnetAssessment.api.Controllers
         public void AddEvent([FromBody] Event ev) => _eventService.AddEvent(ev);
 
         [HttpDelete]
-        [Route("{evId}")]
+        [Route("{evId:guid}")]
         [AllowAnonymous]
         public void DeleteEvent(Guid evId) => _eventService.DeleteEvent(evId);
     }

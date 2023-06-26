@@ -13,7 +13,7 @@ namespace dotnetAssessment.api.Controllers
 
         public AddressController(IAddressService addressService)
         {
-            this._addressService = addressService;
+            _addressService = addressService;
         }
 
         [HttpGet]
@@ -21,7 +21,7 @@ namespace dotnetAssessment.api.Controllers
          public IEnumerable<Address> GetAllAddresses() => _addressService.GetAllAddresses();
 
         [HttpGet]
-        [Route("{addressId}")]
+        [Route("{addressId:guid}")]
          public Address GetAddressById(Guid addressId) => _addressService.GetAddressById(addressId);
 
         [HttpPost]
@@ -30,7 +30,7 @@ namespace dotnetAssessment.api.Controllers
         public void AddAddress([FromBody] Address address) => _addressService.AddAddress(address);
 
         [HttpDelete]
-        [Route("{addressId}")]
+        [Route("{addressId:guid}")]
         [AllowAnonymous]
         public void DeleteAddress(Guid addressId) => _addressService.DeleteAddress(addressId);
     }

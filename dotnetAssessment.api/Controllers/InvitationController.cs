@@ -12,7 +12,7 @@ namespace dotnetAssessment.api.Controllers
         private readonly IInvitationService _invitationService;
         public InvitationController(IInvitationService invitationService)
         {
-            this._invitationService = invitationService;
+            _invitationService = invitationService;
         }
 
         [HttpGet]
@@ -33,7 +33,7 @@ namespace dotnetAssessment.api.Controllers
         public void AddInvitation([FromBody] Invitation inv) => _invitationService.AddInvitation(inv);
 
         [HttpDelete]
-        [Route("{invId}")]
+        [Route("{invId:guid}")]
         [AllowAnonymous]
         public void DeleteEvent(Guid invId) => _invitationService.DeleteInvitation(invId);
     }

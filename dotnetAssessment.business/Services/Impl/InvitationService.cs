@@ -11,8 +11,8 @@ namespace dotnetAssessment.business.Services.Impl
 
         public InvitationService(IUnitOfWork unitOfWork, ILogger<InvitationService> logger)
         {
-            this._unitOfWork = unitOfWork;
-            this._logger = logger;
+            _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         public IEnumerable<Invitation> GetAllInvitations() => _unitOfWork.InvitationRepository.GetAll();

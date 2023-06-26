@@ -13,7 +13,7 @@ namespace dotnetAssessment.api.Controllers
 
         public DeveloperController(IDeveloperService developerService)
         {
-            this._developerService = developerService;
+            _developerService = developerService;
         }
 
         [HttpGet]
@@ -30,7 +30,7 @@ namespace dotnetAssessment.api.Controllers
         public Task<Developer> AddDeveloper([FromBody] Developer dev) => _developerService.AddDeveloper(dev);
 
         [HttpDelete]
-        [Route("{devId}")]
+        [Route("{devId:guid}")]
         [AllowAnonymous]
         public Task<Guid> DeleteDeveloper(Guid devId) => _developerService.DeleteDeveloper(devId);
 
